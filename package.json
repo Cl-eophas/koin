@@ -1,0 +1,24 @@
+{
+  "name": "yppeople-monorepo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "YPPEOPLE \u2014 real Express/MongoDB backend (backend/) + new Next.js frontend (web/). Legacy single-file SPA preserved in frontend/.",
+  "scripts": {
+    "install:all": "npm install --prefix backend && npm install --prefix web",
+    "seed": "npm run seed --prefix backend",
+    "dev:backend": "npm run dev --prefix backend",
+    "dev:web": "API_PROXY_TARGET=http://localhost:5000 npm run dev --prefix web",
+    "dev": "concurrently -n backend,web -c yellow,cyan \"npm run dev:backend\" \"npm run dev:web\"",
+    "build:web": "npm run build --prefix web",
+    "start:backend": "npm start --prefix backend",
+    "start:web": "npm start --prefix web",
+    "start": "concurrently -n backend,web -c yellow,cyan \"npm run start:backend\" \"npm run start:web\"",
+    "prod": "npm run build:web && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

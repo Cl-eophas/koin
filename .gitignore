@@ -1,0 +1,30 @@
+# Secrets - never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build output
+web/.next/
+web/out/
+web/tsconfig.tsbuildinfo
+
+# Uploaded personal documents (IDs, KRA certificates, medical records)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Logs and test coverage
+*.log
+npm-debug.log*
+coverage/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

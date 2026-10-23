@@ -1,0 +1,32 @@
+# Render: the backend (API, database access, scheduled jobs). The web app is on Netlify.
+services:
+  - type: web
+    name: koin-api
+    runtime: node
+    plan: free
+    region: frankfurt
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NODE_ENV
+        value: production
+      - key: DB_STORAGE_LIMIT_MB
+        value: "512"
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: PUBLIC_APP_URL
+        sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_CALLBACK_URL
+        sync: false

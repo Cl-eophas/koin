@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "leaflet/dist/leaflet.css";
+
+/* Theme palettes. Dark is the default; light is chosen with the theme toggle. */
+:root, :root[data-theme="dark"] {
+  --base-bg: 10 10 10;
+  --base-surface: 19 19 19;
+  --base-card: 22 22 22;
+  --base-border: 38 38 38;
+  --base-hover: 29 29 29;
+  --ink: 255 255 255;
+  --gray-50: 249 250 251; --gray-100: 243 244 246; --gray-200: 229 231 235; --gray-300: 209 213 219;
+  --gray-400: 156 163 175; --gray-500: 107 114 128; --gray-600: 75 85 99; --gray-700: 55 65 81;
+  --gray-800: 31 41 55; --gray-900: 17 24 39;
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --base-bg: 244 244 242;
+  --base-surface: 255 255 255;
+  --base-card: 255 255 255;
+  --base-border: 221 221 221;
+  --base-hover: 240 240 238;
+  --ink: 17 17 17;
+  --gray-50: 17 24 39; --gray-100: 31 41 55; --gray-200: 31 41 55; --gray-300: 55 65 81;
+  --gray-400: 75 85 99; --gray-500: 107 114 128; --gray-600: 156 163 175; --gray-700: 209 213 219;
+  --gray-800: 229 231 235; --gray-900: 243 244 246;
+  color-scheme: light;
+}
+
+html, body { background: rgb(var(--base-bg)); color: rgb(var(--ink)); }
+* { border-color: rgb(var(--base-border)); }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-thumb { background: rgb(var(--base-border)); border-radius: 999px; }
+
+@media print {
+  body * { visibility: hidden !important; }
+  #print-area, #print-area * { visibility: visible !important; }
+  #print-area { position: absolute; left: 0; top: 0; width: 100%; padding: 12px; background: #fff !important; }
+  #print-area * { color: #000 !important; background: transparent !important; border-color: #999 !important; }
+  @page { size: landscape; margin: 10mm; }
+}
+
+@media print { .no-print { display: none !important; } }
+
+@media print { @page agreement { size: A4 portrait; margin: 14mm; } }
+
+/* Accent colour presets. Default is gold; each person can choose another on their device. */
+:root, :root[data-accent="gold"] { --accent: 246 201 14; --accent-hover: 224 184 0; }
+:root[data-accent="ocean"]   { --accent: 96 165 250;  --accent-hover: 59 130 246; }
+:root[data-accent="emerald"] { --accent: 52 211 153;  --accent-hover: 16 185 129; }
+:root[data-accent="violet"]  { --accent: 167 139 250; --accent-hover: 139 92 246; }
+:root[data-accent="rose"]    { --accent: 251 113 133; --accent-hover: 244 63 94; }
+:root[data-accent="orange"]  { --accent: 251 146 60;  --accent-hover: 249 115 22; }
+:root[data-accent="slate"]   { --accent: 148 163 184; --accent-hover: 100 116 139; }

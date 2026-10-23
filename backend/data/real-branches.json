@@ -1,0 +1,234 @@
+[
+  {
+    "name": "Carrefour Westgate",
+    "address": "Westgate Shopping Mall, Mwanzi Rd, Westlands, Nairobi",
+    "hours": "8:00 AM – 10:00 PM",
+    "town": "Nairobi",
+    "lat": -1.2573,
+    "lng": 36.8033
+  },
+  {
+    "name": "Carrefour Two Rivers",
+    "address": "Two Rivers Mall, Off Limuru Rd, Nairobi",
+    "hours": "8:00 AM – 11:00 PM",
+    "town": "Nairobi",
+    "lat": -1.2144,
+    "lng": 36.7901
+  },
+  {
+    "name": "Carrefour Sarit Center",
+    "address": "Sarit Centre, Karuna Rd, Westlands, Nairobi",
+    "hours": "7:30 AM – 10:00 PM",
+    "town": "Nairobi",
+    "lat": -1.2568,
+    "lng": 36.8042
+  },
+  {
+    "name": "Carrefour Mega",
+    "address": "Uhuru Highway, Nairobi",
+    "hours": "Open 24 Hours",
+    "town": "Nairobi",
+    "lat": -1.3022,
+    "lng": 36.8256
+  },
+  {
+    "name": "Carrefour Market GTC",
+    "address": "Global Trade Centre (GTC), Westlands Rd, Nairobi",
+    "hours": "Open 24 Hours",
+    "town": "Nairobi",
+    "lat": -1.2612,
+    "lng": 36.8065
+  },
+  {
+    "name": "Carrefour The Hub",
+    "address": "The Hub Karen, Dagoretti Rd, Karen, Nairobi",
+    "hours": "8:00 AM – 9:30 PM",
+    "town": "Nairobi",
+    "lat": -1.3204,
+    "lng": 36.7029
+  },
+  {
+    "name": "Carrefour Junction",
+    "address": "The Junction Mall, Ngong Rd, Nairobi",
+    "hours": "7:00 AM – 11:00 PM",
+    "town": "Nairobi",
+    "lat": -1.3005,
+    "lng": 36.7618
+  },
+  {
+    "name": "Carrefour Thika Road Mall (TRM)",
+    "address": "Thika Road Mall, Thika Rd, Nairobi",
+    "hours": "8:00 AM – 11:00 PM",
+    "town": "Nairobi",
+    "lat": -1.2217,
+    "lng": 36.8831
+  },
+  {
+    "name": "Carrefour Galleria",
+    "address": "Galleria Shopping Mall, Lang'ata Rd, Nairobi",
+    "hours": "8:00 AM – 11:00 PM",
+    "town": "Nairobi",
+    "lat": -1.3411,
+    "lng": 36.7725
+  },
+  {
+    "name": "Carrefour Garden City",
+    "address": "Garden City Mall, Thika Rd, Nairobi",
+    "hours": "7:00 AM – 10:00 PM",
+    "town": "Nairobi",
+    "lat": -1.2325,
+    "lng": 36.8778
+  },
+  {
+    "name": "Carrefour Village Market",
+    "address": "Village Market, Limuru Rd, Gigiri, Nairobi",
+    "hours": "7:00 AM – 10:00 PM",
+    "town": "Nairobi",
+    "lat": -1.228,
+    "lng": 36.8056
+  },
+  {
+    "name": "Carrefour Market BBS Mall",
+    "address": "Business Bay Square Mall, General Waruingi St, Eastleigh, Nairobi",
+    "hours": "9:00 AM – 12:00 AM (Midnight)",
+    "town": "Nairobi",
+    "lat": -1.2755,
+    "lng": 36.8492
+  },
+  {
+    "name": "Carrefour St. Ellis",
+    "address": "St. Ellis House, Wabera St, Nairobi CBD",
+    "hours": "7:00 AM – 11:00 PM",
+    "town": "Nairobi",
+    "lat": -1.2847,
+    "lng": 36.8225
+  },
+  {
+    "name": "Carrefour Market Runda Mall",
+    "address": "Runda Mall, Kiambu Rd, Nairobi",
+    "hours": "7:00 AM – 10:00 PM",
+    "town": "Nairobi",
+    "lat": -1.2185,
+    "lng": 36.8322
+  },
+  {
+    "name": "Carrefour Market Parklands",
+    "address": "Parklands Mall, Second Parklands Ave, Nairobi",
+    "hours": "7:00 AM – 11:00 PM",
+    "town": "Nairobi",
+    "lat": -1.2587,
+    "lng": 36.8181
+  },
+  {
+    "name": "Carrefour Market Spring Valley",
+    "address": "Spring Valley Mall, Lower Kabete Rd, Nairobi",
+    "hours": "7:00 AM – 10:00 PM",
+    "town": "Nairobi",
+    "lat": -1.2483,
+    "lng": 36.7865
+  },
+  {
+    "name": "Carrefour Nextgen",
+    "address": "Nextgen Mall, Mombasa Rd, Nairobi",
+    "hours": "8:00 AM – 10:00 PM",
+    "town": "Mombasa",
+    "lat": -1.3201,
+    "lng": 36.8522
+  },
+  {
+    "name": "Carrefour Market Valley Arcade",
+    "address": "Valley Arcade Shopping Mall, Gitanga Rd, Nairobi",
+    "hours": "8:00 AM – 10:00 PM",
+    "town": "Nairobi",
+    "lat": -1.2917,
+    "lng": 36.7714
+  },
+  {
+    "name": "Carrefour Nyali",
+    "address": "City Mall Nyali, Malindi Rd, Mombasa",
+    "hours": "8:00 AM – 10:00 PM",
+    "town": "Mombasa",
+    "lat": -4.0185,
+    "lng": 39.7139
+  },
+  {
+    "name": "Carrefour Promenade",
+    "address": "Promenade Mall, Links Rd, Nyali, Mombasa",
+    "hours": "Open 24 Hours",
+    "town": "Mombasa",
+    "lat": -4.0252,
+    "lng": 39.7041
+  },
+  {
+    "name": "Carrefour Diani",
+    "address": "Centre Point Mall, Diani Beach Road, Diani",
+    "hours": "8:00 AM – 10:00 PM",
+    "town": "Diani, Kwale",
+    "lat": -4.2794,
+    "lng": 39.5847
+  },
+  {
+    "name": "Carrefour Mega Plaza Kisumu",
+    "address": "Mega Plaza, Oginga Odinga Rd / Apindi St, Kisumu",
+    "hours": "7:00 AM – 10:00 PM",
+    "town": "Kisumu",
+    "lat": -0.1023,
+    "lng": 34.7614
+  },
+  {
+    "name": "Carrefour United Mall Kisumu",
+    "address": "United Mall, Jomo Kenyatta Hwy, Kisumu",
+    "hours": "7:00 AM – 10:00 PM",
+    "town": "Kisumu",
+    "lat": -0.0984,
+    "lng": 34.7661
+  },
+  {
+    "name": "Carrefour Market Kenol",
+    "address": "Kenol Mall, Nairobi-Embu Highway, Kenol",
+    "hours": "7:30 AM – 10:00 PM",
+    "town": "Kenol, Murang'a",
+    "lat": -1.0118,
+    "lng": 37.1232
+  },
+  {
+    "name": "Carrefour Ruiru",
+    "address": "Ruiru Town",
+    "hours": "8:00 AM – 10:00 PM",
+    "town": "Ruiru",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "name": "Carrefour Waris Mall",
+    "address": "Ruai, Nairobi",
+    "hours": "8:00 AM – 10:00 PM",
+    "town": "Ruai",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "name": "Carrefour Market Masai Mall",
+    "address": "Ongata Rongai, Kajiado",
+    "hours": "8:00 AM – 10:00 PM",
+    "town": "Ongata Rongai, Kajiado",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "name": "Carrefour Marurui / Thome",
+    "address": "Northern Bypass, Nairobi",
+    "hours": "8:00 AM – 10:00 PM",
+    "town": "Nairobi",
+    "lat": null,
+    "lng": null
+  },
+  {
+    "name": "Carrefour Watamu",
+    "address": "Watamu Town",
+    "hours": "8:00 AM – 9:00 PM",
+    "town": "Watamu, Kilifi",
+    "lat": null,
+    "lng": null
+  }
+]

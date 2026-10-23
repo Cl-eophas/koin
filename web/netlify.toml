@@ -1,0 +1,16 @@
+# Netlify hosts the web app. Requests to /api are passed on to the backend (Render),
+# so the sign-in cookie stays on the same site as the app.
+# Replace YOUR-BACKEND with your Render service name, for example koin-api.onrender.com
+
+[build]
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NEXT_PUBLIC_REALTIME_URL = "https://YOUR-BACKEND.onrender.com"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://YOUR-BACKEND.onrender.com/api/:splat"
+  status = 200
+  force = true
