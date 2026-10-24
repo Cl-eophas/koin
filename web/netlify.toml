@@ -7,13 +7,13 @@
 
 [build.environment]
   NODE_VERSION = "22"
-  NEXT_PUBLIC_REALTIME_URL = "https://koin.onrender.com"
+  NEXT_PUBLIC_REALTIME_URL = "https://koin-jyvc.onrender.com"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
 
 [[redirects]]
   from = "/api/*"
-  to = "https://koin.onrender.com/api/:splat"
+  to = "https://koin-jyvc.onrender.com/api/:splat"
   status = 200
   force = true
