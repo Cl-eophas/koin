@@ -110,6 +110,10 @@ export default function RegisterPage() {
             Admin verification is mandatory. Access is restricted until an operations manager approves this profile.
           </p>
 
+          <label className="flex items-start gap-3 text-xs text-gray-500">
+            <input type="checkbox" name="consent" required className="mt-0.5 h-4 w-4 accent-accent" />
+            <span>I agree to the <a href="/terms" className="font-bold text-accent">Terms of Use</a> and the <a href="/privacy" className="font-bold text-accent">Privacy Policy</a>, and I understand my personal data will be used for employment records and payroll.</span>
+          </label>
           <Button type="submit" className="w-full" disabled={loading}>
             {loading ? "Submitting..." : "Submit Registration Request"}
           </Button>

@@ -386,3 +386,12 @@ Cost: $0 with the free plans. Only the backend runs on Render, so it stays withi
 - **Admins:** **Records search** in the sidebar finds a staff member by name or staff ID, then searches their records the same way.
 - **Retention (Settings → System & Permissions):** the number of months each kind of record stays searchable. The default is 12 months and the minimum is 12. Retention is saved as a setting; the archive job that uses it to move older records to Google Drive is not built yet, so nothing is moved or deleted by it today.
 
+## Legal and trust checklist (status)
+- **Privacy Policy and Terms of Use** (`/privacy`, `/terms`): drafts with placeholders. A Kenyan lawyer must review them before use.
+- **Cookie notice:** shown on every page. koin uses only essential cookies, and stores theme and colour on the device.
+- **Registration:** a required tick box for Terms and Privacy.
+- **Light-mode text contrast:** raised so grey text meets readable contrast on white.
+- **Third parties:** listed in the Privacy Policy (MongoDB Atlas, Render, Netlify, Brevo, Google, OpenStreetMap, UptimeRobot).
+- **Fonts:** system fonts only, so no font licence is needed.
+- **Still to do:** lawyer review, company details, retention periods, an unsubscribe footer on any non-essential email, and a review of data fields that are not needed.
+

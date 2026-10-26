@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  devIndicators: false,
   async rewrites() {
     // Proxies /api/* to the existing YPPEOPLE Express backend during dev,
     // so cookies/JWT auth continues to work same-origin.

@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { AuthProvider } from "@/lib/auth";
-import { DevToolsHost } from "@/components/layout/DevToolsHost";
 import { ToastProvider } from "@/components/ui/Toast";
 import { PublicThemeToggle } from "@/components/layout/ThemeToggle";
+import { CookieNotice } from "@/components/layout/CookieNotice";
 
 export const metadata: Metadata = {
   title: "koin — Workforce Management",
@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ToastProvider>
             {children}
             <PublicThemeToggle />
-            {process.env.NODE_ENV !== "production" && <DevToolsHost />}
+            <CookieNotice />
           </ToastProvider>
         </AuthProvider>
       </body>
