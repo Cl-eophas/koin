@@ -27,7 +27,7 @@ export function GoogleSignIn() {
       {message && <div className="mb-3 rounded-lg border border-status-warning/30 bg-status-warning/10 px-3 py-2 text-xs font-semibold text-status-warning">{message}</div>}
       <button
         type="button"
-        disabled={!enabled}
+        disabled={enabled === false}
         onClick={() => { window.location.href = "/api/auth/google"; }}
         className="w-full rounded-xl border border-base-border py-3 text-sm font-bold hover:bg-base-hover disabled:opacity-40"
       >

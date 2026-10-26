@@ -341,7 +341,8 @@ exports.refresh = async (req, res) => {
   try {
     const valid = await verifyRefreshToken(user_id, rawToken);
     if (!valid) {
-      clearRefreshCookie(res);
+      // Do not clear the cookie here. A second tab or request may have just rotated it,
+      // and clearing it would sign the person out. The request is still refused.
       await recordEvent("token_reuse", {
         user_id,
         ip_address: getIP(req),
