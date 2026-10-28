@@ -39,6 +39,19 @@ exports.promoteRole = async (req, res) => {
   }
 };
 
+exports.demoteOneLevel = async (req, res) => {
+  try {
+    const { user_id, branch_id } = req.body;
+    const r = await promotionService.demoteOneLevel({ user_id, branch_id, actor_id: req.user._id });
+    if (!r.ok) return res.status(r.code).json({ success: false, message: r.message });
+    await writePromotionAudit(req, "PROMOTION", user_id, r.from, r.to, { kind: "demote_one_level" });
+    return res.json({ success: true, message: `Moved to ${r.label}.` });
+  } catch (err) {
+    console.error("[demoteOneLevel]", err);
+    return res.status(500).json({ success: false, message: "Server error." });
+  }
+};
+
 exports.demoteRole = async (req, res) => {
   try {
     const { user_id } = req.body;

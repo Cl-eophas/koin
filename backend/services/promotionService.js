@@ -1,5 +1,7 @@
 const User = require("../models/User");
 const StaffProfile = require("../models/StaffProfile");
+const Branch = require("../models/Branch");
+const { LEVELS, currentLevelKey, indexOfKey } = require("../utils/careerLadder");
 const Attendance = require("../models/Attendance");
 const SecurityEvent = require("../models/SecurityEvent");
 const { assertActiveBranch } = require("../utils/branchEmployment");
@@ -214,4 +216,43 @@ async function promoteOneLevel({ user_id, branch_id }) {
   };
 }
 
-module.exports = { promoteRole, demoteRole, promoteEmployment, promoteOneLevel, checkOptionalPromotionConditions };
+
+// Demote one step down the ladder. Admin -> General supervisor -> Supervisor -> Staff -> Reliever -> Casual.
+async function demoteOneLevel({ user_id, branch_id, actor_id }) {
+  if (actor_id && String(actor_id) === String(user_id)) return { ok: false, code: 400, message: "You cannot demote your own account." };
+  const user = await User.findById(user_id);
+  if (!user || user.deleted_at) return { ok: false, code: 404, message: "User not found." };
+  const profile = await StaffProfile.findOne({ user_id: user._id }).select("type").lean();
+  const fromKey = currentLevelKey(user, profile && profile.type);
+  const i = indexOfKey(fromKey);
+  if (i <= 0) return { ok: false, code: 400, message: "This person is already at the lowest level." };
+  const target = LEVELS[i - 1];
+
+  if (fromKey === "admin") {
+    const others = await User.countDocuments({ role: "admin", is_active: true, deleted_at: null, _id: { $ne: user._id } });
+    if (others < 1) return { ok: false, code: 400, message: "At least one active admin must remain." };
+  }
+  if (fromKey === "supervisor" && user.branch_id) {
+    const others = await User.countDocuments({ branch_id: user.branch_id, role: "supervisor", is_active: true, deleted_at: null, _id: { $ne: user._id } });
+    if (others < 1) return { ok: false, code: 400, message: "Cannot demote the last supervisor for this branch. Assign another supervisor first." };
+  }
+
+  let newBranch = null;
+  if (target.needsBranch) {
+    const bid = branch_id || user.branch_id;
+    if (!bid) return { ok: false, code: 400, message: `Choose a branch for the ${target.label} level.` };
+    const br = await Branch.findById(bid).select("name is_active").lean();
+    if (!br || br.is_active === false) return { ok: false, code: 400, message: "That branch is not active." };
+    newBranch = br._id;
+  }
+
+  user.role = target.role;
+  user.employment_type = target.employment_type;
+  user.branch_id = newBranch;
+  user.branch = newBranch;
+  await user.save({ validateModifiedOnly: true });
+  if (target.profile_type) await StaffProfile.updateOne({ user_id: user._id }, { $set: { type: target.profile_type } });
+  return { ok: true, from: fromKey, to: target.key, label: target.label };
+}
+
+module.exports = { promoteRole, demoteRole, demoteOneLevel, promoteEmployment, promoteOneLevel, checkOptionalPromotionConditions };

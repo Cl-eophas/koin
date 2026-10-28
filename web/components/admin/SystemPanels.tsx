@@ -94,6 +94,17 @@ export function AdminsPanel() {
     }
   }
 
+  async function demoteAdmin(a: any) {
+    if (!confirm(`Demote ${a.name} from admin to General supervisor? They will lose admin access.`)) return;
+    try {
+      const r: any = await admin.demote(a._id);
+      show(r.message || "Demoted", "success");
+      load();
+    } catch (e: any) {
+      show(e.message || "Could not demote.", "error");
+    }
+  }
+
   async function toggle(a: any) {
     try {
       if (a.is_active) await admin.deactivateUser(a._id);
@@ -133,6 +144,9 @@ export function AdminsPanel() {
             </div>
             <div className="flex items-center gap-3">
               <StatusBadge label={a.is_active ? "Active" : "Inactive"} tone={a.is_active ? "success" : "neutral"} />
+              {!a.you && a.is_active && (
+                <button onClick={() => demoteAdmin(a)} className="rounded-md border border-status-danger/40 px-3 py-1.5 text-xs font-bold text-status-danger">Demote</button>
+              )}
               {!a.you && (
                 <button onClick={() => toggle(a)} className="rounded-md border border-base-border px-3 py-1.5 text-xs font-bold">
                   {a.is_active ? "Deactivate" : "Reactivate"}

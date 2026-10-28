@@ -15,6 +15,7 @@ const TABS = ["overview", "staff", "attendance", "settings", "requests"] as cons
 type Tab = (typeof TABS)[number];
 const NEXT: Record<string, string> = { casual: "reliever", reliever: "staff", staff: "supervisor", supervisor: "general_supervisor", general_supervisor: "admin" };
 const LEVEL: Record<string, string> = { casual: "Casual", reliever: "Reliever", staff: "Staff", supervisor: "Supervisor", general_supervisor: "General supervisor", admin: "Admin" };
+const PREV: Record<string, string> = { reliever: "Casual", staff: "Reliever", supervisor: "Staff", general_supervisor: "Supervisor", admin: "General supervisor" };
 const iso = (d: Date) => d.toISOString().slice(0, 10);
 const days = (n: number) => Array.from({ length: n }, (_, i) => iso(new Date(Date.now() - (n - 1 - i) * 86400000)));
 
@@ -147,10 +148,10 @@ function StaffTab({ id, branchName, onChanged }: { id: string; branchName: strin
   }, [id]);
 
   async function demote(p: any) {
-    if (!confirm(`Move ${p.name} from supervisor back to Staff at ${branchName}? They lose supervisor access.`)) return;
+    if (!confirm(`Demote ${p.name} to ${PREV[p.level]} at ${branchName}?`)) return;
     setBusy(p._id);
     try {
-      const r: any = await admin.demoteRole(p._id);
+      const r: any = await admin.demote(p._id, id);
       show(r.message || "Moved to Staff", "success");
       load();
       onChanged();
@@ -196,9 +197,9 @@ function StaffTab({ id, branchName, onChanged }: { id: string; branchName: strin
             <td className="px-4 py-3"><StatusBadge label={LEVEL[p.level] || p.level} tone="info" /></td>
             <td className="px-4 py-3 text-gray-400">{p.phone || "—"}</td>
             <td className="px-4 py-3">
-              {p.level === "supervisor" && (
+              {PREV[p.level] && (
                 <button onClick={() => demote(p)} disabled={busy === p._id} className="mr-2 rounded-md border border-status-danger/40 px-3 py-1.5 text-xs font-bold text-status-danger disabled:opacity-40">
-                  Move to Staff
+                  Demote to {PREV[p.level]}
                 </button>
               )}
               {NEXT[p.level] ? (

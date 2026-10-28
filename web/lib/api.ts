@@ -363,6 +363,7 @@ export const admin = {
   promote: (user_id: string, branch_id?: string) =>
     api("/admin/promote", { method: "POST", body: JSON.stringify({ user_id, branch_id: branch_id || undefined }) }),
   demoteRole: (user_id: string) => api("/admin/demote-role", { method: "POST", body: JSON.stringify({ user_id }) }),
+  demote: (user_id: string, branch_id?: string) => api("/admin/demote", { method: "POST", body: JSON.stringify({ user_id, branch_id: branch_id || undefined }) }),
   // System & Permissions matrix
   permissions: () => api("/admin/permissions", { ttl: 60000 }),
   savePermissions: (matrix: Record<string, Record<string, boolean>>) =>

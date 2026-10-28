@@ -32,6 +32,7 @@ router.post(
 );
 
 router.post("/demote-role", guard, [body("user_id").isMongoId()], validate, promotion.demoteRole);
+router.post("/demote", guard, [body("user_id").isMongoId(), body("branch_id").optional({ checkFalsy: true }).isMongoId()], validate, promotion.demoteOneLevel);
 
 router.post(
   "/promote-employment",
