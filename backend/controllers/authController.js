@@ -316,6 +316,9 @@ exports.completeProfile = async (req, res) => {
 };
 
 // ─── POST /api/auth/refresh ────────────────────────────────────────────────────
+// Last successful refresh per person. A refused request arriving just after one is an overlap, not an attack.
+const recentRefresh = new Map();
+
 exports.refresh = async (req, res) => {
   const rawCookie = req.cookies?.wms_refresh;
   if (!rawCookie)
@@ -343,7 +346,8 @@ exports.refresh = async (req, res) => {
     if (!valid) {
       // Do not clear the cookie here. A second tab or request may have just rotated it,
       // and clearing it would sign the person out. The request is still refused.
-      await recordEvent("token_reuse", {
+      const overlap = recentRefresh.get(String(user_id));
+      if (!overlap || Date.now() - overlap > 15000) await recordEvent("token_reuse", {
         user_id,
         ip_address: getIP(req),
         metadata: { note: "Invalid refresh token" },
@@ -363,6 +367,7 @@ exports.refresh = async (req, res) => {
     const { raw: newRefresh, expiresAt } = await issueRefreshToken(user._id, ip, ua);
 
     setRefreshCookie(res, newRefresh, expiresAt, user._id);
+    recentRefresh.set(String(user._id), Date.now());
 
     return res.json({
       success: true,

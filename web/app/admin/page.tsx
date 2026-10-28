@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { StatCard } from "@/components/ui/Card";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { PageHeader } from "@/components/layout/AdminChrome";
-import { adminOverview } from "@/lib/demoAdmin";
 import { admin } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 
@@ -58,10 +57,10 @@ export default function AdminOverviewPage() {
       )}
 
       <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
-        <StatCard label="Total Staff" value={s ? s.workforce.total_staff : adminOverview.stats.activeEmployees} sub={s ? `${s.workforce.active} active, ${s.workforce.inactive} inactive` : "Across all regions"} />
-        <StatCard label="Clocked In Today" value={s ? s.today.clocked_in : adminOverview.stats.clockedInNow} sub="Live feed matching shift schedules" tone="success" />
-        <StatCard label="Pending Leave Requests" value={s ? s.pending_leave : adminOverview.stats.notClockedIn} sub="Awaiting approval" tone="warning" />
-        <StatCard label="Active Branches" value={s ? s.branches : adminOverview.stats.activeBranches} sub="Operational" />
+        <StatCard label="Total Staff" value={s ? s.workforce.total_staff : "—"} sub={s ? `${s.workforce.active} active, ${s.workforce.inactive} inactive` : "Across all regions"} />
+        <StatCard label="Clocked In Today" value={s ? s.today.clocked_in : "—"} sub="Live feed matching shift schedules" tone="success" />
+        <StatCard label="Pending Leave Requests" value={s ? s.pending_leave : "—"} sub="Awaiting approval" tone="warning" />
+        <StatCard label="Active Branches" value={s ? s.branches : "—"} sub="Operational" />
       </div>
 
       <div className="mt-5 grid grid-cols-2 gap-5">
@@ -71,7 +70,7 @@ export default function AdminOverviewPage() {
             <a href="/admin/users" className="text-xs font-bold text-accent">Review queue</a>
           </div>
           <div className="space-y-3">
-            {(s ? [] : adminOverview.pendingApprovals).map((a: any, i: number) => (
+            {(s ? [] : []).map((a: any, i: number) => (
               <div key={i} className="flex items-center justify-between rounded-lg bg-ink/5 px-3 py-2.5">
                 <div>
                   <div className="text-sm font-semibold">{a.name}</div>
@@ -94,7 +93,7 @@ export default function AdminOverviewPage() {
             <StatusBadge label={`${s ? s.security_alerts : 3} Unresolved`} tone={s?.security_alerts ? "danger" : "warning"} />
           </div>
           <div className="space-y-3">
-            {(s ? s.alerts : adminOverview.flags).map((f: any, i: number) => (
+            {(s ? s.alerts : []).map((f: any, i: number) => (
               <div key={i} className="flex items-center justify-between rounded-lg bg-ink/5 px-3 py-2.5">
                 <div>
                   <div className="text-sm font-semibold">{f.type || f.name}</div>
@@ -111,7 +110,7 @@ export default function AdminOverviewPage() {
       <div className="mt-5 rounded-card border border-base-border bg-base-card p-5">
         <h3 className="mb-4 font-bold">Live Activity Log</h3>
         <div className="space-y-3">
-          {(s ? s.recent_activity : adminOverview.activity).map((a: any, i: number) => (
+          {(s ? s.recent_activity : []).map((a: any, i: number) => (
             <div key={i} className="rounded-lg bg-ink/5 px-4 py-3 text-sm">
               <span className="font-bold text-accent">{a.admin_id?.name || a.who}</span> {a.action || a.action}
               {a.target_type && <span className="text-gray-500"> on {a.target_type}</span>}
