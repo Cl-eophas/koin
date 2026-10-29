@@ -4,7 +4,6 @@ import { Search, X, FileText, ExternalLink } from "lucide-react";
 import { PageHeader, TableShell } from "@/components/layout/AdminChrome";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { Button } from "@/components/ui/Button";
-import { registrationQueue as demoQueue } from "@/lib/demoAdmin";
 import { admin } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 import { useToast } from "@/components/ui/Toast";
@@ -44,7 +43,7 @@ export default function UsersPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [demoMode, tab, query]);
 
-  const list = rows ?? (tab === "pending" ? demoQueue : []);
+  const list = rows ?? [];
 
   async function reject(user: any) {
     const reason = prompt(`Reason for rejecting ${user.name || user.fullName}?`);

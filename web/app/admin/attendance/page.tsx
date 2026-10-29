@@ -4,7 +4,6 @@ import { Search, X } from "lucide-react";
 import { StatCard } from "@/components/ui/Card";
 import { PageHeader, TableShell, Toolbar } from "@/components/layout/AdminChrome";
 import { StatusBadge } from "@/components/ui/StatusBadge";
-import { attendanceMonitor as demo, branches as demoBranchList } from "@/lib/demoAdmin";
 import { admin } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 
@@ -43,12 +42,12 @@ export default function AttendancePage() {
     return () => clearTimeout(t);
   }, [demoMode, date, branchId, query]);
 
-  const rows = result?.rows ?? demo.rows;
+  const rows = result?.rows ?? [];
   const summary = result?.summary;
-  const present = summary ? (summary.Present || 0) + (summary.Late || 0) : demo.stats.present.split(" / ")[0];
-  const total = result ? result.total : demo.stats.present.split(" / ")[1];
-  const late = summary ? summary.Late || 0 : demo.stats.late;
-  const absent = summary ? summary.Absent || 0 : demo.stats.critical;
+  const present = summary ? (summary.Present || 0) + (summary.Late || 0) : 0;
+  const total = result ? result.total : 0;
+  const late = summary ? summary.Late || 0 : 0;
+  const absent = summary ? summary.Absent || 0 : 0;
 
   return (
     <div>
@@ -73,7 +72,7 @@ export default function AttendancePage() {
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="rounded-lg border border-base-border bg-transparent px-3 py-2 text-sm text-gray-300" />
         <select value={branchId} onChange={(e) => setBranchId(e.target.value)} className="rounded-lg border border-base-border bg-transparent px-3 py-2 text-sm text-gray-400">
           <option value="">Branch: All Locations</option>
-          {(branches.length ? branches : demoBranchList).map((b: any) => <option key={b._id || b.id} value={b._id || b.id}>{b.name}</option>)}
+          {branches.map((b: any) => <option key={b._id || b.id} value={b._id || b.id}>{b.name}</option>)}
         </select>
         <div className="flex items-center gap-2 rounded-lg border border-base-border px-3 py-2 text-sm text-gray-500">
           <Search size={14} />

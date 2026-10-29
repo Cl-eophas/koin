@@ -40,6 +40,22 @@ export default function StaffPage() {
     }
   }
 
+  // One step down the ladder: Admin > General supervisor > Supervisor > Staff > Reliever > Casual.
+  const BELOW: Record<string, string> = { admin: "General supervisor", general_supervisor: "Supervisor", supervisor: "Staff", staff: "Reliever", reliever: "Casual" };
+  async function demoteRow(s: any) {
+    const key = levelOf(s);
+    if (!BELOW[key]) return;
+    if (!confirm(`Demote ${s.name} from ${LEVEL_NAME[key] || key} to ${BELOW[key]}?`)) return;
+    try {
+      const branch = s.branch_id?._id || s.branch_id || undefined;
+      const r: any = await admin.demote(s._id, branch);
+      show(r.message || "Demoted", "success");
+      load();
+    } catch (e: any) {
+      show(e.message || "Could not demote.", "error");
+    }
+  }
+
   async function load() {
     if (demoMode) return;
     try {
@@ -116,6 +132,7 @@ export default function StaffPage() {
               <td className="px-4 py-3">
                 <div className="flex gap-2">
                   <button onClick={() => setEditing(s)} disabled={isDemo} className="rounded-md border border-base-border px-3 py-1.5 text-xs font-bold disabled:opacity-40">Edit Profile</button>
+                  <button onClick={() => demoteRow(s)} disabled={isDemo || !BELOW[levelOf(s)]} className="rounded-md border border-status-danger/40 px-3 py-1.5 text-xs font-bold text-status-danger disabled:opacity-40">Demote</button>
                   <button onClick={() => setPromoting(s)} disabled={isDemo || s.role === "admin"} className="rounded-md bg-accent px-3 py-1.5 text-xs font-bold text-black disabled:opacity-40">Promote</button>
                   <button onClick={() => exportData(s)} disabled={isDemo} className="rounded-md border border-base-border px-3 py-1.5 text-xs font-bold disabled:opacity-40">Export data</button>
                   <button onClick={() => eraseData(s)} disabled={isDemo || s.role === "admin"} className="rounded-md border border-status-danger/40 px-3 py-1.5 text-xs font-bold text-status-danger disabled:opacity-40">Erase</button>

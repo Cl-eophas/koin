@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Search, X } from "lucide-react";
 import { StatCard } from "@/components/ui/Card";
 import { PageHeader, TableShell, Toolbar } from "@/components/layout/AdminChrome";
-import { payrollRows as demoRows } from "@/lib/demoAdmin";
 import { admin } from "@/lib/api";
 import { useAuth } from "@/lib/auth";
 
@@ -32,7 +31,7 @@ export default function PayrollPage() {
     })();
   }, [demoMode, month]);
 
-  const rows = data ? data.rows.filter((r: any) => !query.trim() || r.name.toLowerCase().includes(query.toLowerCase())) : demoRows;
+  const rows = data ? data.rows.filter((r: any) => !query.trim() || r.name.toLowerCase().includes(query.toLowerCase())) : [];
 
   return (
     <div>
@@ -54,7 +53,7 @@ export default function PayrollPage() {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-        <StatCard label="Total Gross Pay" value={data ? kes(data.grand_total_gross) : "KES 148,590.20"} sub={`${data ? data.row_count : demoRows.length} employees`} />
+        <StatCard label="Total Gross Pay" value={data ? kes(data.grand_total_gross) : "—"} sub={`${data ? data.row_count : "—"} employees`} />
         <StatCard label="Total Deductions" value={data ? kes(data.grand_total_deductions) : "KES 1,972.83"} sub="PAYE, NSSF, SHA, Housing Levy" tone="warning" />
         <StatCard label="Total Net Pay" value={data ? kes(data.grand_total_net) : "KES 11,206.07"} sub="After statutory deductions" tone="success" />
       </div>
