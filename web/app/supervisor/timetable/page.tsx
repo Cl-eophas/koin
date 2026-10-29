@@ -23,7 +23,8 @@ type Schedule = Record<string, Cell>;
 export default function SupervisorTimetablePage() {
   const { demoMode } = useAuth();
   const { show } = useToast();
-  const [weekStart, setWeekStart] = useState(mondayOf(new Date()));
+  const [weekStart, setWeekStart] = useState("");
+  useEffect(() => { setWeekStart(mondayOf(new Date())); }, []);
   const [templates, setTemplates] = useState<any[]>([]);
   const [staff, setStaff] = useState<any[]>([]);
   const [schedules, setSchedules] = useState<Record<string, Schedule>>({});
@@ -35,7 +36,7 @@ export default function SupervisorTimetablePage() {
   async function load() {
     if (demoMode) return;
     try {
-      const res: any = await timetable.week(weekStart);
+      const res: any = await timetable.week(weekStart || mondayOf(new Date()));
       setTemplates(res.templates || []);
       setStaff(res.staff || []);
       setSchedules(res.schedules || {});

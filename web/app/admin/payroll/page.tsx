@@ -13,7 +13,8 @@ function currentMonth() {
 
 export default function PayrollPage() {
   const { demoMode } = useAuth();
-  const [month, setMonth] = useState(currentMonth());
+  const [month, setMonth] = useState("");
+  useEffect(() => { setMonth(currentMonth()); }, []);
   const [query, setQuery] = useState("");
   const [data, setData] = useState<any | null>(null);
   const [error, setError] = useState<string | null>(null);

@@ -268,7 +268,8 @@ function AddStaffModal({ id, onClose, onAdded }: { id: string; onClose: () => vo
 }
 
 function AttendanceTab({ id }: { id: string }) {
-  const [date, setDate] = useState(iso(new Date()));
+  const [date, setDate] = useState("");
+  useEffect(() => { setDate(iso(new Date())); }, []);
   const [rows, setRows] = useState<any[] | null>(null);
   useEffect(() => {
     setRows(null);

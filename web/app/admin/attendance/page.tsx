@@ -16,7 +16,9 @@ function fmt(iso?: string | null) {
 
 export default function AttendancePage() {
   const { demoMode } = useAuth();
-  const [date, setDate] = useState(today());
+  const [date, setDate] = useState("");
+  // Set the date after the page loads, so the saved copy and the browser match.
+  useEffect(() => { setDate(today()); }, []);
   const [branchId, setBranchId] = useState("");
   const [query, setQuery] = useState("");
   const [branches, setBranches] = useState<any[]>([]);

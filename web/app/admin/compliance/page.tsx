@@ -116,11 +116,11 @@ function ReviewsSection() {
 
 function AdjustmentsSection() {
   const { show } = useToast();
-  const now = new Date();
   const [staffId, setStaffId] = useState("");
   const [type, setType] = useState<"deduction" | "addition">("deduction");
   const [amount, setAmount] = useState(0);
-  const [period, setPeriod] = useState(`${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`);
+  const [period, setPeriod] = useState("");
+  useEffect(() => { const n = new Date(); setPeriod(`${n.getFullYear()}-${String(n.getMonth() + 1).padStart(2, "0")}`); }, []);
   const [reason, setReason] = useState("");
   const [list, setList] = useState<any[]>([]);
   const [saving, setSaving] = useState(false);
