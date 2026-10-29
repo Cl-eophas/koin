@@ -39,8 +39,8 @@ export default function UniformsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [demoMode, query]);
 
-  const rows = items ?? demoRows;
-  const pending = items ? items.filter((i) => i.needs_attention).length : demoRows.filter((r) => r.condition === "Worn").length;
+  const rows = items ?? [];
+  const pending = items ? items.filter((i) => i.needs_attention).length : 0;
 
   async function doReturn(id: string) {
     try {

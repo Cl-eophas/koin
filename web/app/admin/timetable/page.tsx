@@ -1,5 +1,4 @@
 import { PageHeader } from "@/components/layout/AdminChrome";
-import { timetableWeek } from "@/lib/demoAdmin";
 
 export default function TimetablePage() {
   return (
@@ -17,22 +16,22 @@ export default function TimetablePage() {
 
       <div className="mb-4 flex items-center gap-4 text-sm">
         <span className="text-gray-500">
-          ACTIVE BRANCH FILTER: <b className="text-ink">{timetableWeek.branch}</b>
+          ACTIVE BRANCH FILTER: <b className="text-ink">—</b>
         </span>
         <span className="text-gray-500">
-          ROSTER PERIOD: <b className="text-ink">{timetableWeek.period}</b>
+          ROSTER PERIOD: <b className="text-ink">—</b>
         </span>
       </div>
 
       <div className="grid grid-cols-7 gap-3">
-        {timetableWeek.days.map((d) => (
+        {([] as any[]).map((d: any) => (
           <div key={d.day} className="rounded-card border border-base-border bg-base-card p-3">
             <div className="mb-2 text-xs font-bold text-gray-400">
               {d.day} <span className="text-gray-600">{d.date}</span>
             </div>
             <div className="space-y-2">
               {d.shifts.length === 0 && <div className="text-xs text-gray-600">No shifts</div>}
-              {d.shifts.map((s, i) => (
+              {([] as any[]).map((s: any, i: number) => (
                 <div key={i} className="rounded-lg bg-ink/5 p-2 text-xs">
                   <div className="font-bold text-accent">{s.label}</div>
                   <div className="mt-0.5 text-gray-400">{s.time}</div>

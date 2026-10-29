@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { PageHeader, TableShell, Toolbar } from "@/components/layout/AdminChrome";
-import { approvalsQueue } from "@/lib/demoAdmin";
 
 export default function ApprovalsPage() {
   const [tab, setTab] = useState<"leave" | "registrations" | "transfers">("leave");
@@ -35,7 +34,7 @@ export default function ApprovalsPage() {
 
       {tab === "leave" ? (
         <TableShell headers={["", "Requestor", "Request Type", "Details", "Submitted Date", "Actions"]}>
-          {approvalsQueue.leave.map((r, i) => (
+          {([] as any[]).map((r, i) => (
             <tr key={i} className="border-b border-base-border last:border-0 hover:bg-ink/5">
               <td className="px-4 py-3"><input type="checkbox" className="accent-accent" /></td>
               <td className="px-4 py-3 font-bold">{r.who}</td>

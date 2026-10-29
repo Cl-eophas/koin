@@ -34,7 +34,7 @@ function normalizeLive(rows: any[]): MapBranch[] {
   }));
 }
 function normalizeDemo(): MapBranch[] {
-  return demoBranches.map((b) => ({ id: b.id, name: b.name, lat: b.lat, lng: b.lng, address: b.address, staffCount: b.staff, status: b.status, radiusMeters: b.radiusMeters }));
+  return [];
 }
 
 export default function BranchesPage() {

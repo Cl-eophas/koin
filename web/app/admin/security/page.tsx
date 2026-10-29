@@ -89,7 +89,7 @@ export default function SecurityPage() {
 
       {tab === "audit" && (
         <TableShell headers={["Timestamp", "Actor", "Action", "Module", "IP Address"]}>
-          {(audit ?? demoAudit).map((r: any, i: number) => (
+          {(audit ?? []).map((r: any, i: number) => (
             <tr key={r._id || i} className="border-b border-base-border last:border-0 hover:bg-ink/5">
               <td className="px-4 py-3 text-gray-400">{audit ? fmt(r.timestamp) : r.time}</td>
               <td className="px-4 py-3 font-bold">{audit ? r.admin_id?.name || "System" : r.actor}</td>
@@ -103,7 +103,7 @@ export default function SecurityPage() {
 
       {tab === "sessions" && (
         <TableShell headers={["User", "Role", "IP Address", "Login Time", "Last Active", "Action"]}>
-          {(sessions ?? demoSessions).map((r: any, i: number) => {
+          {(sessions ?? []).map((r: any, i: number) => {
             const isDemo = !sessions;
             return (
               <tr key={r._id || i} className="border-b border-base-border last:border-0 hover:bg-ink/5">

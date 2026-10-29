@@ -13,10 +13,10 @@ import {
 const GROUPS = [
   { title: null, items: [{ href: "/admin", label: "Overview", icon: LayoutDashboard }] },
   { title: "WORKFORCE", items: [
-    { href: "/admin/users", label: "Users", icon: Users, badge: 8 },
+    { href: "/admin/users", label: "Users", icon: Users },
     { href: "/admin/staff", label: "Staff", icon: User },
     { href: "/admin/attendance", label: "Attendance", icon: Clock },
-    { href: "/admin/leave", label: "Leave", icon: CalIcon, badge: 3 },
+    { href: "/admin/leave", label: "Leave", icon: CalIcon },
     { href: "/admin/payroll", label: "Payroll", icon: DollarSign },
     { href: "/admin/payments", label: "Payments", icon: DollarSign },
     { href: "/admin/compliance", label: "Contract Compliance", icon: CheckSquare },

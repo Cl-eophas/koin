@@ -72,8 +72,8 @@ export default function LeavePage() {
     }
   }
 
-  const pendingList = rows ?? demoPending;
-  const accrualList = accrual ?? demoAccrual;
+  const pendingList = rows ?? [];
+  const accrualList = accrual ?? [];
 
   return (
     <div>

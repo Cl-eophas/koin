@@ -39,12 +39,12 @@ export default function ContractsPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [demoMode]);
 
-  const list = (rows ?? demoRows).filter((r: any) => {
+  const list = (rows ?? []).filter((r: any) => {
     const name = r.staff_id?.name || r.name || "";
     return !query.trim() || name.toLowerCase().includes(query.toLowerCase());
   });
-  const accepted = rows ? rows.filter((r) => r.accepted).length : demoRows.filter((r) => r.status === "Active").length;
-  const pending = rows ? rows.filter((r) => !r.accepted).length : demoRows.filter((r) => r.status === "Pending Sign").length;
+  const accepted = rows ? rows.filter((r) => r.accepted).length : 0;
+  const pending = rows ? rows.filter((r) => !r.accepted).length : 0;
 
   return (
     <div>

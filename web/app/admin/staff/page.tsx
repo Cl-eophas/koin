@@ -73,7 +73,7 @@ export default function StaffPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [demoMode, query, roleFilter]);
 
-  const list = rows ?? demoStaff;
+  const list = rows ?? [];
 
   async function toggleActive(u: any) {
     try {
@@ -147,7 +147,7 @@ export default function StaffPage() {
         })}
         {list.length === 0 && <tr><td colSpan={7} className="px-4 py-8 text-center text-sm text-gray-500">No staff match your filters.</td></tr>}
       </TableShell>
-      <div className="mt-3 text-xs text-gray-600">{rows ? `${rows.length} result(s)` : `${demoStaff.length} sample rows`}</div>
+      <div className="mt-3 text-xs text-gray-600">{rows ? `${rows.length} result(s)` : "Loading…"}</div>
 
       {promoting && <PromoteModal user={promoting} onClose={() => setPromoting(null)} onDone={() => { setPromoting(null); load(); }} />}
       {transferring && <TransferModal user={transferring} onClose={() => setTransferring(null)} onDone={() => { setTransferring(null); load(); }} />}

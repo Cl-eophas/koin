@@ -100,7 +100,7 @@ export default function NotificationsPage() {
         <div className="rounded-card border border-base-border bg-base-card p-5">
           <h3 className="mb-4 font-bold">Recent Broadcasts</h3>
           <div className="space-y-3">
-            {(sentLog.length ? sentLog : demoHistory.map((b) => ({ message: b.title, target: b.target }))).map((b, i) => (
+            {(sentLog).map((b, i) => (
               <div key={i} className="rounded-lg bg-ink/5 p-3">
                 <div className="text-sm font-semibold">{b.message}</div>
                 <div className="mt-1 text-xs text-gray-500">{b.target}</div>
